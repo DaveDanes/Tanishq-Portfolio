@@ -78,7 +78,7 @@
         h1, h2, h3, h4, h5, h6, .display-font { font-family: 'Space Grotesk', sans-serif; }
         .mono-font { font-family: 'JetBrains Mono', monospace; }
         
-        .hero-name { font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; letter-spacing: -2px; line-height: 1.1; }
+        .hero-name { font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; letter-spacing: -2px; line-height: 1.1; margin-top: 4rem; margin-bottom: 1.5rem; }
         .section-heading { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 3rem; text-align: center; }
         .tag-badge { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
 
@@ -346,10 +346,14 @@
         .soft-skill-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-secondary); }
         @media (min-width: 600px) { .soft-skills-grid { grid-template-columns: repeat(4, 1fr); } }
 
-        /* Certifications list */
+        /* Certifications list & Languages */
         .cert-list { list-style: none; }
         .cert-list li { margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 10px; color: var(--text-secondary); }
         .cert-list li::before { content: '✓'; color: #10B981; font-weight: bold; }
+        .lang-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; color: var(--text-secondary); font-size: 0.95rem; }
+        .lang-dots { display: flex; gap: 6px; }
+        .lang-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--track-bg); transition: background-color 0.3s; }
+        .lang-dot.filled { background: var(--accent-primary); box-shadow: 0 0 5px var(--accent-glow); }
 
         /* SECTION 8: Experience */
         .exp-card-featured { border-left: 4px solid var(--accent-primary); padding-left: 30px; margin-bottom: 3rem; }
@@ -431,7 +435,7 @@
         footer { background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); padding: 2rem 0; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
         .footer-content { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
         @media (min-width: 768px) {
-            .footer-content { flex-direction: row; justify-content: space-between; }
+            .footer-content { flex-direction: row; justify-content: space-between; align-items: center; }
         }
         .footer-nav { display: flex; gap: 1rem; list-style: none; }
         .footer-nav a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
@@ -513,29 +517,15 @@
                         Aspiring <span id="typing-text" class="role-text"></span>
                     </div>
 
-                    <ul class="hero-element hero-intro-list">
-                        <li>B.Tech CSE Student @ Manav Rachna University</li>
-                        <li>Building things with Python, C & Arduino</li>
-                        <li>Data enthusiast. Hackathon finalist. Patent holder.</li>
-                        <li>Driven by curiosity, shaped by code.</li>
-                    </ul>
-                    
                     <p class="hero-element hero-bio">
-                        Motivated B.Tech CSE student at Manav Rachna University with a passion for data analysis, software development, and building real-world solutions. Experienced with Python, C, and hardware-software integration.
+                        Analytical and detail-oriented CSE student with hands-on experience in software development and data manipulation. Proficient in Python, SQL, and building data-driven applications. Skilled at translating complex datasets into actionable insights and writing clean, scalable code. Seeking an entry-level role to leverage strong problem-solving skills and technical aptitude in a collaborative environment.
                     </p>
 
                     <div class="hero-element hero-ctas">
                         <a href="#projects" class="btn-primary">View My Work &darr;</a>
                         <a href="javascript:void(0)" class="btn-ghost">Download Resume</a>
                         
-                        <div class="social-icons-row">
-                            <a href="https://github.com/tanishq9790-byte" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            </a>
-                            <a href="https://linkedin.com/in/tanishq-tanishq-a43b17337" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -553,23 +543,17 @@
                 <div class="about-grid">
                     <div class="about-left reveal-left">
                         <div class="avatar-box">T</div>
-                        <div class="stat-cards-row">
-                            <div class="stat-card">🎓 CGPA 7.05 / B.Tech CSE</div>
-                            <div class="stat-card">🏆 4th / Google Hackathon</div>
-                            <div class="stat-card">📜 1 Patent / LIDAR Wearable</div>
-                        </div>
                     </div>
                     <div class="about-right reveal-right">
-                        <p class="about-right-text" style="padding-left: 8px; border-left: 4px solid var(--accent-secondary); margin-bottom: 2rem;">
-                            "Hey! I'm Tanishq, a Computer Science student at Manav Rachna University, New Delhi, graduating in 2027. I'm passionate about software development and data analysis, with hands-on experience in Python, C, and embedded systems.<br><br>
-                            I secured 5th position in my university batch with a 7.05 CGPA, and placed 4th in a Google Hackathon. I've worked with IIT Delhi students during their flagship fests (RDV & TRYST), contributed to the OP Bhalla Foundation, and hold a patent for a wearable device designed to assist visually impaired individuals.<br><br>
-                            Off the screen, I enjoy the gym, travelling, and programming challenges."
+                        <p class="about-right-text" style="padding-left: 24px; border-left: 4px solid var(--accent-secondary); margin-bottom: 2rem;">
+                            Hi, I’m Tanishq!<br><br>
+                            I am an aspiring Software Engineer and Data Analyst currently pursuing my degree in Computer Science & Engineering at Manav Rachna University, Faridabad.<br><br>
+                            My passion lies at the intersection of building software and uncovering the stories hidden within data. I love writing efficient code to solve real-world problems, and then using data analytics to prove that the solution actually works. So far, I have built projects using Python, SQL, and various Python libraries and other tools like Git, GitHub, VS Code, etc. Whether it is developing a web application from scratch or cleaning a messy dataset to find trends, I enjoy the challenge of continuous learning.<br><br>
+                            Off the screen, I enjoy the gym, travelling and finding good food outlets.
                         </p>
                         
                         <div class="highlight-tags">
                             <span class="highlight-pill">📍 New Delhi</span>
-                            <span class="highlight-pill">🎂 Dec 2004</span>
-                            <span class="highlight-pill">🌐 English • Hindi • French</span>
                             <span class="highlight-pill">🏋️‍♂️ Gym & Sports</span>
                         </div>
                     </div>
@@ -590,7 +574,7 @@
                             <h3 class="timeline-title">B.Tech in Computer Science & Engineering</h3>
                             <div class="timeline-subtitle">Manav Rachna University</div>
                             <div class="timeline-score">
-                                <span>🎓</span> 7.05 CGPA <span class="tag-badge" style="color:var(--accent-primary); margin-left: 8px;">5th Rank in Batch</span>
+                                <span>🎓</span> 7.05 CGPA
                             </div>
                         </div>
                     </div>
@@ -629,57 +613,118 @@
                 <h2 class="section-heading reveal">Skills & Expertise</h2>
                 
                 <div class="skills-grid">
-                    <!-- Programming Languages -->
-                    <div class="card reveal-left">
-                        <h3 class="skill-category">Programming Languages</h3>
-                        <div class="skill-bar-row">
-                            <div class="skill-bar-header"><span>C</span><span>80%</span></div>
-                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80%"></div></div>
+                    <!-- Left Column: Tech Skills & Certifications -->
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <!-- Tech Skills -->
+                        <div class="card reveal-left">
+                            <div>
+                                <h3 class="skill-category">Technical Skills</h3>
+                                
+                                <h4 style="font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.5rem;">Languages</h4>
+                                <div class="tool-pills" style="margin-bottom: 1.5rem;">
+                                    <span class="tool-pill">Python</span>
+                                    <span class="tool-pill">SQL</span>
+                                </div>
+
+                                <h4 style="font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.5rem;">Libraries</h4>
+                                <div class="tool-pills" style="margin-bottom: 1.5rem;">
+                                    <span class="tool-pill">Pandas</span>
+                                    <span class="tool-pill">NumPy</span>
+                                    <span class="tool-pill">Matplotlib</span>
+                                    <span class="tool-pill">Scikit-learn</span>
+                                </div>
+
+                                <h4 style="font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.5rem;">Developer & Data Tools</h4>
+                                <div class="tool-pills" style="margin-bottom: 1.5rem;">
+                                    <span class="tool-pill">Git</span>
+                                    <span class="tool-pill">GitHub</span>
+                                    <span class="tool-pill">Docker</span>
+                                    <span class="tool-pill">VS Code</span>
+                                    <span class="tool-pill">Excel</span>
+                                    <span class="tool-pill">Tableau</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 style="font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.5rem;">Core Concepts</h4>
+                                <div class="tool-pills">
+                                    <span class="tool-pill">OOP</span>
+                                    <span class="tool-pill">Data Structures</span>
+                                    <span class="tool-pill">Data Cleaning</span>
+                                    <span class="tool-pill">Data Augmentation</span>
+                                    <span class="tool-pill">Software Lifecycle</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-bar-row">
-                            <div class="skill-bar-header"><span>Python</span><span>70%</span></div>
-                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70%"></div></div>
+
+                        <!-- Certifications -->
+                        <div class="card reveal-left" style="transition-delay: 0.1s;">
+                            <h3 class="skill-category">Certifications</h3>
+                            <ul class="cert-list">
+                                <li>NPTEL Design Thinking <span class="mono-font" style="font-size:0.8rem; margin-top:2px;">— Score: 67%</span></li>
+                                <li>Intro to Quantum Information <span class="mono-font" style="font-size:0.8rem; margin-top:2px;">— KAIST (Coursera)</span></li>
+                                <li>Web Development Certificate <span class="mono-font" style="font-size:0.8rem; margin-top:2px;">— Codsoft</span></li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Tools & Tech -->
-                    <div class="card reveal-right">
-                        <h3 class="skill-category">Tools & Technologies</h3>
-                        <div class="tool-pills">
-                            <span class="tool-pill">🔌 Arduino Uno</span>
-                            <span class="tool-pill">📡 Bluetooth HC05</span>
-                            <span class="tool-pill">🏷️ LabelImg</span>
-                            <span class="tool-pill">📊 MS Excel</span>
-                            <span class="tool-pill">🐍 Python Scripts</span>
-                            <span class="tool-pill">⚙️ Data Augmentation</span>
+                    <!-- Right Column: Strengths & Languages & Soft Skills -->
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <div class="card reveal-right">
+                            <h3 class="skill-category">Strengths</h3>
+                            <div class="tool-pills">
+                                <span class="tool-pill">Pattern Recognition</span>
+                                <span class="tool-pill">Crisis Thinking</span>
+                                <span class="tool-pill">Rapid Learning</span>
+                                <span class="tool-pill">Mental Resilience</span>
+                                <span class="tool-pill">People Reading</span>
+                                <span class="tool-pill">Deep Focus</span>
+                                <span class="tool-pill">Self-Reliance</span>
+                                <span class="tool-pill">System Thinking</span>
+                                <span class="tool-pill">Strategic Patience</span>
+                                <span class="tool-pill">Logical Detachment</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="skills-grid" style="margin-top: 2rem;">
-                    <!-- Soft Skills -->
-                    <div class="card reveal-left">
-                        <h3 class="skill-category">Soft Skills</h3>
-                        <div class="soft-skills-grid">
-                            <div class="soft-skill-item">🤝 Teamwork</div>
-                            <div class="soft-skill-item">💪 Hardworking</div>
-                            <div class="soft-skill-item">🧩 Problem Solving</div>
-                            <div class="soft-skill-item">🗣️ Communication</div>
-                            <div class="soft-skill-item">🚀 Fast Learner</div>
-                            <div class="soft-skill-item">📋 Project Coord.</div>
-                            <div class="soft-skill-item">📱 Social Media</div>
-                            <div class="soft-skill-item">🌐 Bilingual (EN/HI/FR)</div>
+                        <div class="card reveal-right" style="transition-delay: 0.1s;">
+                            <h3 class="skill-category">Languages</h3>
+                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                                <div class="lang-item">
+                                    <span>English</span>
+                                    <div class="lang-dots">
+                                        <span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+                                    </div>
+                                </div>
+                                <div class="lang-item">
+                                    <span>Hindi (Native)</span>
+                                    <div class="lang-dots">
+                                        <span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+                                    </div>
+                                </div>
+                                <div class="lang-item" style="margin-bottom: 0;">
+                                    <span>French</span>
+                                    <div class="lang-dots">
+                                        <span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot"></span><span class="lang-dot"></span><span class="lang-dot"></span><span class="lang-dot"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Certifications -->
-                    <div class="card reveal-right">
-                        <h3 class="skill-category">Certifications</h3>
-                        <ul class="cert-list">
-                            <li>NPTEL Design Thinking <span class="mono-font" style="font-size:0.8rem; margin-top:2px;">— Score: 67%</span></li>
-                            <li>Intro to Quantum Information <span class="mono-font" style="font-size:0.8rem; margin-top:2px;">— KAIST (Coursera)</span></li>
-                            <li>Web Development Certificate <span class="mono-font" style="font-size:0.8rem; margin-top:2px;">— Codsoft</span></li>
-                        </ul>
+                        <div class="card reveal-right" style="transition-delay: 0.2s;">
+                            <h3 class="skill-category">Soft Skills</h3>
+                            <div class="tool-pills">
+                                <span class="tool-pill">Active Listening</span>
+                                <span class="tool-pill">Clear Communication</span>
+                                <span class="tool-pill">Emotional Control</span>
+                                <span class="tool-pill">Adaptability</span>
+                                <span class="tool-pill">Professional Loyalty</span>
+                                <span class="tool-pill">Independent Thinking</span>
+                                <span class="tool-pill">Crisis Handling</span>
+                                <span class="tool-pill">Situational Awareness</span>
+                                <span class="tool-pill">Competitive Drive</span>
+                                <span class="tool-pill">Social Intelligence</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -943,6 +988,14 @@
     <footer>
         <div class="container footer-content">
             <div class="footer-left">&copy; 2025 Tanishq &middot; Built with ❤️ in New Delhi</div>
+            <div class="social-icons-row" style="margin-left: 0; justify-content: center;">
+                <a href="https://github.com/tanishq9790-byte" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://linkedin.com/in/tanishq-tanishq-a43b17337" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
             <ul class="footer-nav mono-font">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
