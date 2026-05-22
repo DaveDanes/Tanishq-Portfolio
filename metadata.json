@@ -1,0 +1,6 @@
+{
+  "name": "Tanishq - Software Engineer Portfolio",
+  "description": "Production-ready, single-file personal portfolio for Tanishq, built with pure HTML5/CSS3/Vanilla JS adhering to strict design specs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
