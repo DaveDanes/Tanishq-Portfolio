@@ -1106,17 +1106,40 @@
             btn.innerHTML = 'Sending...';
             btn.style.opacity = '0.7';
             
-            // Simulate network request
-            setTimeout(() => {
+            // Send request to formsubmit.co
+            fetch("https://formsubmit.co/ajax/vatstanishq5108@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
                 successMsg.style.display = 'block';
+                successMsg.innerHTML = 'Message sent successfully! ✨';
+                successMsg.style.color = '#10B981';
                 form.reset();
+            })
+            .catch(error => {
+                successMsg.style.display = 'block';
+                successMsg.innerHTML = 'Oops! There was a problem submitting your form.';
+                successMsg.style.color = '#EF4444';
+            })
+            .finally(() => {
                 btn.innerHTML = originalText;
                 btn.style.opacity = '1';
                 
                 setTimeout(() => {
                     successMsg.style.display = 'none';
-                }, 4000);
-            }, 1000);
+                }, 5000);
+            });
         });
     </script>
 </body>
