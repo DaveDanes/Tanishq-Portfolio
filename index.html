@@ -202,6 +202,13 @@
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        @media (min-width: 1200px) {
+            nav .container.nav-container {
+                max-width: 100%;
+                padding-left: calc((100% - 1200px) / 2 + 5%);
+                padding-right: 5%;
+            }
+        }
         .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-primary); text-decoration: none; text-shadow: 0 0 10px var(--accent-glow); }
         
         .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
@@ -460,7 +467,6 @@
             <a href="#home" class="logo mono-font">&lt;T/&gt;</a>
             
             <ul class="nav-links">
-                <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -490,7 +496,6 @@
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay">
         <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#education" class="nav-link">Education</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -677,15 +682,12 @@
                             <h3 class="skill-category">Strengths</h3>
                             <div class="tool-pills">
                                 <span class="tool-pill">Pattern Recognition</span>
-                                <span class="tool-pill">Crisis Thinking</span>
                                 <span class="tool-pill">Rapid Learning</span>
                                 <span class="tool-pill">Mental Resilience</span>
                                 <span class="tool-pill">People Reading</span>
                                 <span class="tool-pill">Deep Focus</span>
                                 <span class="tool-pill">Self-Reliance</span>
-                                <span class="tool-pill">System Thinking</span>
                                 <span class="tool-pill">Strategic Patience</span>
-                                <span class="tool-pill">Logical Detachment</span>
                             </div>
                         </div>
 
@@ -718,14 +720,11 @@
                             <div class="tool-pills">
                                 <span class="tool-pill">Active Listening</span>
                                 <span class="tool-pill">Clear Communication</span>
-                                <span class="tool-pill">Emotional Control</span>
-                                <span class="tool-pill">Adaptability</span>
-                                <span class="tool-pill">Professional Loyalty</span>
                                 <span class="tool-pill">Independent Thinking</span>
                                 <span class="tool-pill">Crisis Handling</span>
                                 <span class="tool-pill">Situational Awareness</span>
                                 <span class="tool-pill">Competitive Drive</span>
-                                <span class="tool-pill">Social Intelligence</span>
+                                <span class="tool-pill">Emotional and Social Intelligence</span>
                             </div>
                         </div>
                     </div>
@@ -785,7 +784,7 @@
                             </div>
                         </div>
                         <div class="project-footer" style="padding: 1.5rem 2rem;">
-                            <a href="#" class="btn-ghost" style="padding: 6px 16px; font-size: 0.85rem; width:100%;">View Details &rarr;</a>
+                            <a href="#projects" class="btn-ghost" style="padding: 6px 16px; font-size: 0.85rem; width:100%;">View Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -818,8 +817,6 @@
             </div>
         </section>
 
-        <hr class="section-separator" />
-
         <!-- Extra-Curricular Section -->
         <section id="extra-curricular">
             <div class="container">
@@ -845,7 +842,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact">
+        <section id="contact" class="bg-alt">
             <div class="container">
                 <h2 class="section-heading reveal">Get In Touch</h2>
                 <div class="contact-quote reveal">"Let's build something great together."</div>
@@ -897,6 +894,7 @@
                     <!-- Right: Form -->
                     <div class="contact-form reveal-right">
                         <form id="contactForm">
+                            <input type="text" name="_honey" id="honey" style="display:none;">
                             <div class="form-group">
                                 <label for="name" style="display:none;">Name</label>
                                 <input type="text" id="name" class="form-control" placeholder="Name" required>
@@ -961,22 +959,23 @@
 
         // Custom Cursor
         const cursor = document.getElementById('custom-cursor');
+        let hoverState = false;
         if(window.matchMedia("(hover: hover)").matches) {
             document.addEventListener('mousemove', (e) => {
                 requestAnimationFrame(() => {
-                    cursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
+                    cursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px) ${hoverState ? 'scale(1.5)' : ''}`;
                 });
             });
             // Interactive states for cursor
             document.querySelectorAll('a, button, input, textarea, .card').forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    cursor.style.transform += ' scale(1.5)';
+                    hoverState = true;
                     cursor.style.backgroundColor = 'transparent';
                     cursor.style.border = '2px solid var(--accent-primary)';
                 });
                 el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = cursor.style.transform.replace(' scale(1.5)', '');
-                    cursor.style.backgroundColor = 'var(--accent-primary)';
+                    hoverState = false;
+                    cursor.style.backgroundColor = 'var(--text-primary)';
                     cursor.style.border = 'none';
                 });
             });
@@ -1106,6 +1105,18 @@
             btn.innerHTML = 'Sending...';
             btn.style.opacity = '0.7';
             
+            const honey = document.getElementById('honey').value;
+            if (honey) {
+                // If honeypot is filled, it's likely a bot. Silently fail or ignore.
+                successMsg.style.display = 'block';
+                successMsg.innerHTML = 'Message sent successfully! ✨';
+                form.reset();
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+                setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+                return;
+            }
+
             // Send request to formsubmit.co
             fetch("https://formsubmit.co/ajax/vatstanishq5108@gmail.com", {
                 method: "POST",
@@ -1117,7 +1128,8 @@
                     name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
                     subject: document.getElementById('subject').value,
-                    message: document.getElementById('message').value
+                    message: document.getElementById('message').value,
+                    _honey: honey
                 })
             })
             .then(response => response.json())
