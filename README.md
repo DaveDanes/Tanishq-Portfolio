@@ -4,7 +4,7 @@ A clean, modern, and fully responsive personal portfolio website showcasing my p
 
 ## 🚀 Live Demo
 
-[Link to Live Demo (Update once deployed)](#)
+https://davedanes.github.io/Tanishq-Portfolio/
 
 ## 🛠️ Tech Stack & Skills
 
